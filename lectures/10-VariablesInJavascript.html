@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variables in JavaScript</title>
+    <script type="text/javascript">
+        var globalExample = "I Love JavaScript";
+        function stringTest() {
+            try {
+                if (txttest.toString().length < 1) {
+                    var mystring = globalExample;
+                } else {
+                    var mystring = txttest.value;
+                }
+
+                var begin = txtBegin.value;
+                var end = txtEnd.value;
+
+                var seg = mystirng.substring(begin, end);
+                alert(seg);
+            } catch (err) {
+                alert("input is " + err);
+            }
+        }
+
+        function basicVariables() {
+            try {
+                var empId = 16;                                 // Number
+                var lastName = "Smith";                         // String
+                var jobs = ["Programmer", "Manager", "Sales"];    // Array
+                var x = { firstName: "John", lastName: "Smith" };  // Object
+                var currentEmployee = true;                       // Boolean
+
+                var answer1 = 10 + "JavaScript";
+                alert(answer1);
+
+                var answer2 = 3 + 5 + "Javascript";
+                alert(answer2);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anticipating Errors</title>
+    <script type="text/javascript">
+        "use strict";
+
+        function trig() {
+            try {
+                var temp;
+                var angle;
+                angle = txttest.value;
+
+                if (isNaN(angle)) {
+                    alert("Enter a valid number");
+                } else {
+                    //TODO Do the actual logic
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function divide(txtdivisor, txtdividend) {
+            try {
+                var answer;
+                var divisor = txtdivisor.value;
+                var dividend = txtdividend.value;
+
+                if (isNaN(divisor)) {
+                    alert("Enter a valid divisor");
+                    return;
+                }
+
+                if (isNaN(dividend)) {
+                    alert("Enter a valid dividend");
+                    return;
+                }
+
+                if (divisor == 0) {
+                    alert("Can't divide by zero!");
+                    return;
+                }
+
+                return dividend / divisor;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+    </script>
+</head>
+<body BGCOLOR="white">
+    <!--TODO Build UI -->
+
+
+</body>
+</html>

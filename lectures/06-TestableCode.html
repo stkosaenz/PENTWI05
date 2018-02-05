@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testable Code</title>
+    <script type="text/javascript">
+        var gameOver;
+        var cardCount;
+
+        function Shuffle(max) {
+            try {
+                var num = Math.random() * max;
+                return Math.round(num) + 1;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function getSuit() {
+            suit = Shuffle(4);
+            if (suit == 1) {
+                return "Spades";
+            }
+
+            if (suit == 2) {
+                return "Clubs";
+            }
+
+            if (suit == 3) {
+                return "Diamonds";
+            }
+
+            if (suit == 4) {
+                return "Hearts";
+            }
+        }
+
+        function cardName(card) {
+            try {
+                if (card == 1) {
+                    return "Ace";
+                }
+
+                if (card == 11) {
+                    return "Jack";
+                }
+
+                if (card == 12) {
+                    return "Queen";
+                }
+
+                if (card == 13) {
+                    return "King";
+                }
+
+                return "" + card;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function cardValue(card, strWho) {
+            try {
+                if (card == 1) {
+                    if (strWho == "You" && document.display.you.value > 10) {
+                        document.display.say2.value = document.display.say2.value += " Low";
+                        return 1;
+                    } else {
+                        return 11;
+                    }
+                }
+                //TODO: ETC code, simple functions 
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+
+</body>
+</html>

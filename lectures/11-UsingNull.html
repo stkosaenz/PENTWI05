@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using Null</title>
+    <script type="text/javascript">
+        function verifyEmployee() {
+            try {
+                var iAge = document.getElementById("age");
+                if (isNan(iAge)) {
+                    alert("enter a valid integer age");
+                    return;
+                }
+
+                if (iAge < 18) {
+                    throw "too low";
+                    return;
+                }
+
+                if (iAge > 100) {
+                    throw "too high";
+                    return;
+                }
+
+                // Null check!
+                if (sampleForm.job.value == null) {
+                    alert("you must enter a value for job");
+                    return;
+                }
+                var sJob = document.getElementById("job");
+                switch (sJob) {
+                    case "programmer":
+                        //TODO: Programmer
+                        return
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+        var employee = {};
+        function retrieveUser(lastName) {
+            try {
+                if ("localStorage" in window && window["localStorage"] !== null) {
+                    employee = localStorage.getItem(lastName);
+                    if (employee == null) {
+                        alert("no such an employee");
+                        return;
+                    } else {
+                        employee = null;
+                    }
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+
+</body>
+</html>

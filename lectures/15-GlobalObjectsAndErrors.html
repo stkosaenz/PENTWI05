@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global Objects and Errors</title>
+    <script type="text/javascript">
+        function convert(degree) {
+            try {
+                if (degree == "C") {
+                    var F = document.getElementById("temp").value * 9 / 5 + 32;
+                    alert("That converts to " + Math.round(F));
+                } else {
+                    var C = (document.getElementById("temp").value - 32) * 5 / 9;
+                    alert("That converst to " + Math.round(C));
+                }
+            } catch (err) {
+                alert(err.message);
+                document.write("Error description: " + err.description);
+                document.write("Error number: " + err.number);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <p>Click the button convert the temperature.</p>
+    <select id="degree">
+        <option selected value="C">Centigrades</option>
+        <option value="F">Farenheith</option>
+    </select>
+    <input type="text" id="temp" />
+    <button onclick="convert(document.getElementById('degree').value);">Convert</button>
+
+</body>
+</html>

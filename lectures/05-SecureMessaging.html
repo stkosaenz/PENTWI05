@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Messaging</title>
+    <script type="text/javascript">
+        function sendMessage(message) {
+            var target = window.open("http://127.0.0.1:8887/code/05-SecureMessaging.html");
+            target.postMessage(message, "https://mysource.com");
+        }
+
+        window.addEventListener("message", receiveMessage, false);
+
+        function receiveMessage(event) {
+            alert(event);
+            if (event.origin == "http://127.0.0.1:8887/code/05-SecureMessaging.html") {
+                var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+                while (SCRIPT_REGEX.test(message)) {
+                    message = message.replace(SCRIPT_REGEX, "");
+                }
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <form name="sampleForm">
+        Message to Send:
+        <input type="text" name="message" required>
+        <br>
+        <input type="button" value="SendMessage" onclick="sendMessage('this.sampleForm.message');" />
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event handlers and untrusted data</title>
+    <script type="text/javascript">
+        window.onerror = myOnError;
+
+        messageArray = new Array(0);
+        urlArray = new Array(0);
+        lineNumberArray = new Array(0);
+        function myOnError(msg, url, lno) {
+            messageArray[messageArray.length] = msg;
+            urlArray[urlArray.length] = url;
+            lineNumberArray[lineNumberArray.length] = lno;
+            return true;
+        }
+
+        function displayErrors() {
+            errorWindow = window.open("", "errors", "scrollbars=yes");
+            errorWindow.document.write("<b>Error Report</b><p>");
+            for (var i = 0; i < messsageArray.length; i++) {
+                errorWindow.document.write("<b>Error in file: </b>" + urlArray[i] + "<br />");
+                errorWindow.document.write("<b>Line Number: </b>" + lineNumberArray[i] + "<br />");
+                errorWindow.document.write("<b>Message: </b>" + messageArray[i] + "</p>");
+            }
+            errorWindow.document.close();
+        }
+
+        function onClick() {
+            var datatocheck;
+            datatocheck = document.getElementById("age");
+
+            try {
+                if (datatocheck == "") {
+                    throw "empty";
+                }
+                if (isNaN(datatocheck)) {
+                    throw "not a number";
+                }
+                if (datatocheck < 18) {
+                    throw "too low";
+                }
+                if (datatocheck > 100) {
+                    throw "too high";
+                }
+            } catch (err) {
+                alert("Input is " + err);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <form>
+        <input type="button" onClick="displayErrors();" value="display errors" />
+    </form>
+    <form id="empldatafrm">
+        First name:
+        <input type="text" id="fname" value="John" />
+        <br /> Last name:
+        <input type="text" id="lname" value="Smith" />
+        <br /> Age:
+        <input type="text" id="age" value="30" />
+        <br /> Job:
+        <input type="text" id="job" value="Programmer" />
+        <br />
+        <br />
+        <input type="button" value="Submit" onclick="onClick();" />
+    </form>
+
+</body>
+</html>

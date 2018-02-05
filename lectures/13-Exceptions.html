@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exceptions</title>
+    <script type="text/javascript">
+        function mostBasicExample() {
+            try {
+                var num1 = 10;
+                var num2 = 0;
+                var answer = num1 / num2;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function exceptionsFormValidation() {
+            var datatocheck;
+            datatocheck = document.getElementById("age");
+
+            try {
+                if (datatocheck == "") {
+                    throw "empty";
+                }
+                if (isNaN(datatocheck)) {
+                    throw "not a number";
+                }
+
+                if (datatocheck < 18) {
+                    throw "too low";
+                }
+                if (datatocheck > 100) {
+                    throw "too high";
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function finallyExample() {
+            var datatocheck;
+            datatocheck = document.getElementById("age");
+
+            try {
+                if (datatocheck == "") {
+                    throw "empty";
+                }
+                if (isNaN(datatocheck)) {
+                    throw "not a number";
+                }
+
+                if (datatocheck < 5) {
+                    throw "too low";
+                }
+                if (datatocheck > 10) {
+                    throw "too high";
+                }
+            } catch (err) {
+                alert(err.message);
+            } finally {
+                document.getElementById("age").value = "";
+            }
+
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <form id="frm1">
+        First name:
+        <input type="text" id="fname" value="John" />
+        <br /> Last name:
+        <input type="text" id="lname" value="Smith" />
+        <br /> Age:
+        <input type="text" id="age" value="30" />
+        <br /> Job:
+        <input type="text" id="job" value="Programmer" />
+        <br />
+        <br />
+        <input type="button" value="Submit" />
+    </form>
+    <button onclick="finallyExample();">Click</button>
+
+</body>
+</html>

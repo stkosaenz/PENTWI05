@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clean Testable Methods</title>
+    <script type="text/javascript">
+        function Calculate(cost, rate, weight, qty) {
+            try {
+                var temp = (cost * qty);
+                var tax = temp * rate;
+                document.sampleform.total.value = temp + tax;
+                var shippingdate = document.getElementById("shipdate");
+
+                // TODO: Send to web service, db, store wherever you want.
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+
+</body>
+</html>

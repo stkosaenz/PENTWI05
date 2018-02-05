@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parameter and return values and functions</title>
+    <script type="text/javascript">
+        function saveuser() {
+            try {
+                var employee = {};
+                employee.lastName = lname.value;
+                employee.firstName = fname.value;
+                employee.age = age.value;
+                employee.job = job.value;
+                localStorage.setItem("employee" + employee.lastName, JSON.stringify(employee));
+            } catch (err) {
+                alert(err.messsage);
+            }
+        }
+
+        function retrieveUser(lastname = "") {
+            try {
+                if (lastname.length < 1) {
+                    alert("no valid name given");
+                } else {
+                    var employee = localStorage.getItem("employee" + lastname);
+                    fname.value = employee.firstName;
+                    alert(employee.firstName);
+                    age.value = employee.age;
+                    job.value = employee.job;
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function returnExample(lastname = "") {
+            try {
+                if (lastname.length < 1) {
+                    alert("no valid name given");
+                } else {
+                    var employee = localStorage.getItem("employee" + lastname);
+                    fname.value = employee.firstName;
+                    alert(employee.firstName);
+                    age.value = employee.age;
+                    job.value = employee.job;
+                    if (employee.job != "") {
+                        return employee.job;
+                    }
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+
+</body>
+</html>

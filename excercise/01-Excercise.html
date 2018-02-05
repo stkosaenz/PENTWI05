@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anticipating Errors</title>
+    <script type="text/javascript">
+        "use strict";
+
+        function validate() {
+            try {
+                document.getElementById("initialUnitCost").value.toString().replace(/[^0-9]/, "");
+                document.getElementById("weight").value.toString().replace(/[^0-9]/, "");
+                var initialUnitCost = document.getElementById("initialUnitCost").value;
+                var taxRate = document.getElementById("taxRate").value;
+                var weight = document.getElementById("weight").value;
+                var quantity = document.getElementById("quantity").value;
+
+                if (isNaN(initialUnitCost)) {
+                    alert("Initial unit cost must be numeric");
+                    return;
+                }
+
+                if (initialUnitCost <= 0) {
+                    alert("Initial unit cost must positive number");
+                    return;
+                }
+
+                if (isNaN(taxRate)) {
+                    alert("Tax rate cost must be numeric");
+                    return;
+                }
+
+                if (taxRate < 0 || taxRate > 1) {
+                    alert("Tax rate must be between 0 and 1");
+                    return;
+                }
+
+                if (isNaN(weight)) {
+                    alert("Weight must be numeric");
+                    return;
+                }
+
+                if (weight <= 0) {
+                    alert("Weight must positive number");
+                    return;
+                }
+
+                if (isNaN(quantity)) {
+                    alert("Quantity must be numeric");
+                    return;
+                }
+
+                if (quantity <= 0) {
+                    alert("Quantity cost must positive number");
+                    return;
+                }
+
+                calculate(initialUnitCost, taxRate, weight, quantity);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function calculate(initialUnitCost, taxRate, weight, quantity) {
+            try {
+                var temp = initialUnitCost * quantity;
+                var tax = temp * taxRate;
+
+                document.getElementById("totalCost").value = temp + tax;
+                var shipDate = document.getElementById("shipDate").value;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <table>
+        <tbody>
+            <tr>
+                <td>Initial Unit Cost:</td>
+                <td>
+                    <input type="text" id="initialUnitCost" />
+                </td>
+            </tr>
+            <tr>
+                <td>Tax Rate:</td>
+                <td>
+                    <input type="text" id="taxRate" />
+                </td>
+            </tr>
+            <tr>
+                <td>Weight (ounces):</td>
+                <td>
+                    <input type="text" id="weight" />
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td>
+                    <input type="number" id="quantity" />
+                </td>
+            </tr>
+            <tr>
+                <td>Total Cost:</td>
+                <td>
+                    <input type="text" id="totalCost" />
+                </td>
+            </tr>
+            <tr>
+                <td>Ship Date:</td>
+                <td>
+                    <input type="date" id="shipDate" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" value="Calculate" onclick="validate();" />
+
+</body>
+</html>

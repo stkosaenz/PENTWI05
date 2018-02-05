@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cross-Origin Resource Sharing</title>
+    <script type="text/javascript">
+        var invocation = new XMLHttpRequest();
+        var url = "http://test.com/resources/public-data/";
+
+        function callOtherDomain() {
+            if (invocation) {
+                invocation.open("GET", url, true);
+                invocation.onreadystatechange = handler;
+                invocation.send();
+            }
+        }
+
+        var invocation = new XMLHttpRequest();
+        var url = "http://test.com/resources/credentialed-content/";
+        function callOtherDomainWithCredentials() {
+            if (invocation) {
+                invocation.open("GET", url, true);
+                invocation.withCredentials = true;
+                invocation.onreadystatechange = handler;
+                invocation.send();
+            }
+        }
+
+        function betterCORSRequest(method, url) {
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+                xhr.open(method, url, true);
+            } else if (typeof XDomainRequest != "undefined") {
+                // Otherwise chec if XDomainRequest.
+                // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+            } else {
+                xhr = null;
+            }
+            return xhr;
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+
+</body>
+</html>

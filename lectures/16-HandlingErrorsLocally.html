@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Handling Errors Locally</title>
+    <script type="text/javascript">
+        "use strict";
+        var balance = -1.0;
+        function getBalance() {
+            try {
+                balance = localStorage.getItem("balance");
+                balanceamt.value = balance;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function setBalance(amount) {
+            try {
+                localStorage.setItem("balance", amount);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function deposit(amount) {
+            try {
+                balance = localStorage.getItem("balance");
+                balance = balance + amount;
+                setBalance(balance);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function whitdraw(amount) {
+            try {
+                balance = localStorage.getItem("balance");
+                balance = balance - amount;
+                setBalance(balance);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <!--TODO Build UI -->
+    Amount to whitdraw:
+    <input type="text" id="withdraw" />
+    <input type="button" onclick="whitdraw(document.getElementById('withdraw').value);">Update
+    <input/>
+    <br /> Amount to deposit:
+    <input type="text" id="deposit" />
+    <input type="button" onclick="deposit(document.getElementById('deposit').value);">Update
+    <input/>
+    <br />
+    <input type="button">Show Balance
+    <input/>
+    <input type="text" id="balance" />
+    <br />
+
+</body>
+</html>

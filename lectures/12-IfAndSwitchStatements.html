@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>If and Switch Statements</title>
+    <script type="text/javascript">
+        function VerifyExample() {
+            var iAge = document.getElementById("age").value;
+            if (isNaN(iAge)) {
+                alert("Enter a valid integer age");
+                return;
+            }
+
+            var sJob = document.getElementById("job").value;
+            switch (sJob) {
+                case "Programmer":
+                    break;
+                case "Manager":
+                    break;
+                case "Sales":
+                    break;
+                default:
+                    alert("Unknown job type");
+            }
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <form id="frm1">
+        First name:
+        <input type="text" id="fname" value="John" />
+        <br /> Last name:
+        <input type="text" id="lname" value="Smith" />
+        <br /> Age:
+        <input type="text" id="age" value="30" />
+        <br /> Job:
+        <input type="text" id="job" value="Programmer" />
+        <br />
+        <br />
+        <input type="button" value="Submit" />
+    </form>
+    <button onclick="VerifyExample();">Click</button>
+
+</body>
+</html>

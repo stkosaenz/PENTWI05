@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure WebStorage</title>
+    <script type="text/javascript">
+        function setSettings() {
+            if ("localStorage" in window && window["localStorage"] !== null) {
+                var backcolor = document.getElementById("backcolor").value;
+                var fontsz = document.getElementById("fontsz").value;
+                localStorage.setItem("bgColor", backcolor);
+                localStorage.fontweight = fontz;
+            } else {
+                alert("Cannot store user preferences as your browser do not support local storage");
+            }
+        }
+
+        function applySettings() {
+            document.body.style.backgroundColor = localStorage.getItem("backcolor");
+            document.body.style.fontSize = localStorage.fontweight + "px";
+            document.getElementById("favcolor").value = localstorage.bgcolor;
+            document.getElementById("fontwt").value = localstorage.fontweight;
+        }
+
+        function sessionStorage() {
+            sessionStorage.setItem("username", "jsmith");
+        }
+    </script>
+</head>
+<body BGCOLOR="white">
+    <form onsubmit="javascript:setSettings();">
+        <label>Select your background color: </label>
+        <input id="backcolor" type="color" value="#ffffff" />
+
+        <label>Select font size: </label>
+        <input id="fontsz" type="number" max="14" min="10" />
+
+        <input type="submit" value="save">
+        <input onclick "clearsettings()" type="reset" value="clear">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Correct use of Escape function</title>
+    <script type="text/javascript">
+        function EscapeFunction() {
+            // The deprecated escape() method computes a new string in which cercain characters have been replaced by hexadecimal escape sequence
+            // encodes a string The escape() function was deprecated in JavaScript version 1.5.
+            document.write(escape("This is jus a normal string? does not really need escape!") + "<br />");
+
+            // Alternatives to escape
+            var uri = "mytest.php?name=sales&car=sedan";
+            var res = encodeURI(uri);
+            document.write(res + "<br />");
+            var uri = "http://somesite.com/mytest.asp?name=sales&car=sedan";
+            var res = encodeURIComponent(uri);
+            document.write(res + "<br />");
+        }
+    </script>
+</head>
+<body BGCOLOR="white" onload="EscapeFunction();">
+
+</body>
+</html>
